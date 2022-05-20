@@ -37,3 +37,21 @@ Common Logger:	2022/05/20 02:26:55 database.go:27: Database Connected
 Common Logger:	2022/05/20 02:26:55 main.go:15: Starting server at port 9091
 Common Logger:	2022/05/20 02:34:52 database.go:27: Database Connected
 Common Logger:	2022/05/20 02:34:52 main.go:14: Starting server at port 9091
+Common Logger:	2022/05/20 12:00:48 database.go:27: Database Connected
+Common Logger:	2022/05/20 12:00:48 main.go:14: Starting server at port 9091
+Common Logger:	2022/05/20 12:02:28 database.go:27: Database Connected
+Common Logger:	2022/05/20 12:02:28 main.go:14: Starting server at port 9091
+Common Logger:	2022/05/20 12:03:00 database.go:27: Database Connected
+Common Logger:	2022/05/20 12:03:00 main.go:14: Starting server at port 9091
+Common Logger:	2022/05/20 12:04:52 database.go:27: Database Connected
+Common Logger:	2022/05/20 12:04:52 main.go:14: Starting server at port 9091
+Common Logger:	2022/05/20 12:05:52 database.go:27: Database Connected
+Common Logger:	2022/05/20 12:05:52 main.go:14: Starting server at port 9091
+Common Logger:	2022/05/20 12:06:51 database.go:27: Database Connected
+Common Logger:	2022/05/20 12:06:51 main.go:14: Starting server at port 9091
+Common Logger:	2022/05/20 12:13:36 database.go:27: Database Connected
+Common Logger:	2022/05/20 12:13:36 main.go:14: Starting server at port 9091
+Common Logger:	2022/05/20 12:15:26 database.go:27: Database Connected
+Common Logger:	2022/05/20 12:15:26 main.go:14: Starting server at port 9091
+Common Logger:	2022/05/20 12:21:18 database.go:27: Database Connected
+Common Logger:	2022/05/20 12:21:18 main.go:15: Starting server at port 9091

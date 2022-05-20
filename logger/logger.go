@@ -10,7 +10,7 @@ var CommonLog *log.Logger
 var ErrorLog *log.Logger
 
 func init() {
-	openLogfile, err := os.OpenFile("/home/gaurav/go/src/github.com/grvsahil/server/log.log", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+	openLogfile, err := os.OpenFile("/home/gaurav/go/src/github.com/grvsahil/golang-crud-server/log.log", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
 	if err != nil {
 		fmt.Println("Error opening file: ", err)
 		os.Exit(1)

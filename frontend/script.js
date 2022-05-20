@@ -14,7 +14,6 @@ function login(event) {
 }
 
 loginUser = async (data) => {
-    const location = window.location.hostname;
     const settings = {
         method: 'POST',
         headers: {
