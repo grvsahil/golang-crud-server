@@ -1,8 +1,8 @@
-package database
+package db
 
 import (
 	"database/sql"
-	"github.com/grvsahil/projectEmployeeJS/logger"
+	"golang-crud-server/logger"
 )
 
 var Db *sql.DB

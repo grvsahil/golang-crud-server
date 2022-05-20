@@ -1,4 +1,4 @@
-module github.com/grvsahil/projectEmployeeJS
+module golang-crud-server
 
 go 1.18
 
@@ -7,7 +7,7 @@ require (
 	github.com/go-sql-driver/mysql v1.6.0
 	github.com/gorilla/handlers v1.5.1
 	github.com/gorilla/mux v1.8.0
-	golang.org/x/crypto v0.0.0-20220513210258-46612604a0f9
+	golang.org/x/crypto v0.0.0-20220518034528-6f7dac969898
 )
 
 require github.com/felixge/httpsnoop v1.0.1 // indirect

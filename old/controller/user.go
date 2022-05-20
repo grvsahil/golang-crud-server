@@ -9,15 +9,15 @@ import (
 
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gorilla/mux"
-	"github.com/grvsahil/projectEmployeeJS/database"
-	"github.com/grvsahil/projectEmployeeJS/logger"
-	"github.com/grvsahil/projectEmployeeJS/model"
+	"golang-crud-server/database"
+	"golang-crud-server/logger"
+	"golang-crud-server/model"
 	"golang.org/x/crypto/bcrypt"
 )
 
 var jwtKey = []byte("my_pass")
 
-func LoginUser(w http.ResponseWriter, r *http.Request) {
+func Login(w http.ResponseWriter, r *http.Request) {
 	var db = database.GetDatabase()
 	var cred model.Credentials
 	err := json.NewDecoder(r.Body).Decode(&cred)

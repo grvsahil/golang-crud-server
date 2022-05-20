@@ -1,6 +1,6 @@
 package controller
 
-import "github.com/grvsahil/projectEmployeeJS/model"
+import "golang-crud-server/model"
 
 func ValidateReq(u *model.ReqUser) bool {
 
@@ -33,5 +33,3 @@ func ValidateRes(u *model.ResUser) bool {
 	return true
 
 }
-
-
