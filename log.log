@@ -1,0 +1,39 @@
+Common Logger:	2022/05/19 17:00:46 main.go:15: Starting server at port 9091
+Common Logger:	2022/05/19 17:04:09 main.go:15: Starting server at port 9091
+Error Logger:	2022/05/19 17:04:09 main.go:16: listen tcp: address 9091000000: invalid port
+Common Logger:	2022/05/19 17:17:32 main.go:15: Starting server at port 9091
+Common Logger:	2022/05/19 17:18:50 main.go:15: Starting server at port 9091
+Error Logger:	2022/05/19 17:19:20 middleware.go:17: http: named cookie not present
+Common Logger:	2022/05/19 17:21:05 main.go:15: Starting server at port 9091
+Error Logger:	2022/05/19 17:21:11 middleware.go:17: http: named cookie not present
+Common Logger:	2022/05/19 17:26:13 main.go:15: Starting server at port 9091
+Error Logger:	2022/05/19 17:26:24 user.go:23: <nil>
+Error Logger:	2022/05/19 17:26:24 user.go:64: <nil>
+Common Logger:	2022/05/19 17:51:49 database.go:27: <nil>
+Common Logger:	2022/05/19 17:51:49 main.go:15: Starting server at port 9091
+Common Logger:	2022/05/19 17:53:20 database.go:27: Database Connected
+Common Logger:	2022/05/19 17:53:20 main.go:15: Starting server at port 9091
+Common Logger:	2022/05/19 23:40:38 database.go:27: Database Connected
+Common Logger:	2022/05/19 23:40:38 main.go:15: Starting server at port 9091
+Common Logger:	2022/05/20 01:23:12 database.go:27: Database Connected
+Common Logger:	2022/05/20 01:23:12 main.go:15: Starting server at port 9091
+Common Logger:	2022/05/20 01:29:21 database.go:27: Database Connected
+Common Logger:	2022/05/20 01:29:21 main.go:15: Starting server at port 9091
+Common Logger:	2022/05/20 01:40:06 database.go:27: Database Connected
+Common Logger:	2022/05/20 01:40:06 main.go:15: Starting server at port 9091
+Common Logger:	2022/05/20 01:41:10 database.go:27: Database Connected
+Common Logger:	2022/05/20 01:41:10 main.go:15: Starting server at port 9091
+Common Logger:	2022/05/20 01:42:17 database.go:27: Database Connected
+Common Logger:	2022/05/20 01:42:17 main.go:15: Starting server at port 9091
+Common Logger:	2022/05/20 01:44:15 database.go:27: Database Connected
+Common Logger:	2022/05/20 01:44:15 main.go:15: Starting server at port 9091
+Common Logger:	2022/05/20 01:49:06 database.go:27: Database Connected
+Common Logger:	2022/05/20 01:49:06 main.go:15: Starting server at port 9091
+Common Logger:	2022/05/20 02:02:43 database.go:27: Database Connected
+Common Logger:	2022/05/20 02:02:43 main.go:15: Starting server at port 9091
+Common Logger:	2022/05/20 02:03:48 database.go:27: Database Connected
+Common Logger:	2022/05/20 02:03:48 main.go:15: Starting server at port 9091
+Common Logger:	2022/05/20 02:26:55 database.go:27: Database Connected
+Common Logger:	2022/05/20 02:26:55 main.go:15: Starting server at port 9091
+Common Logger:	2022/05/20 02:34:52 database.go:27: Database Connected
+Common Logger:	2022/05/20 02:34:52 main.go:14: Starting server at port 9091

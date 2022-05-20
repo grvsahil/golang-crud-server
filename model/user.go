@@ -3,17 +3,16 @@ package model
 import "github.com/dgrijalva/jwt-go"
 
 type Claims struct {
-	Id int
+	Email string
 	jwt.StandardClaims
 }
 
 type Credentials struct {
-	UserId   int    `json:"id"`
+	Email   string    `json:"email"`
 	Password string `json:"password"`
 }
 
 type ReqUser struct {
-	Id       int    `json:"id"`
 	Fname    string `json:"fname"`
 	Lname    string `json:"lname"`
 	Email    string `json:"email"`
@@ -27,4 +26,10 @@ type ResUser struct {
 	Lname string `json:"lname"`
 	Email string `json:"email"`
 	Dob   string `json:"dob"`
+}
+
+type Paginate struct{
+	Data []ResUser
+	Total int
+	Currpage int
 }

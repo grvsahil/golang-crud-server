@@ -2,7 +2,7 @@ package database
 
 import (
 	"database/sql"
-	"fmt"
+	"github.com/grvsahil/projectEmployeeJS/logger"
 )
 
 var Db *sql.DB
@@ -15,14 +15,15 @@ func GetDatabase() *sql.DB {
 func DBinit() {
 	Db, err = sql.Open("mysql", "root:Mobile@123@tcp(localhost:3306)/mysql?charset=utf8")
 	if err != nil {
-		fmt.Println(err)
+		logger.ErrorLog.Println(err)
 		return
 	}
 
 	err = Db.Ping()
 	if err != nil {
-		fmt.Println(err)
+		logger.ErrorLog.Println(err)
 		return
 	}
-	fmt.Println("Database connected")
+	logger.CommonLog.Println("Database Connected")
+
 }

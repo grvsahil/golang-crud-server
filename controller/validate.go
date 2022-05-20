@@ -2,7 +2,7 @@ package controller
 
 import "github.com/grvsahil/projectEmployeeJS/model"
 
-func Validate(u *model.ReqUser) bool {
+func ValidateReq(u *model.ReqUser) bool {
 
 	if len(u.Fname)+len(u.Lname) > 30 {
 		return false
@@ -19,3 +19,19 @@ func Validate(u *model.ReqUser) bool {
 	return true
 
 }
+
+func ValidateRes(u *model.ResUser) bool {
+
+	if len(u.Fname)+len(u.Lname) > 30 {
+		return false
+	}
+
+	if len(u.Email) > 20 {
+		return false
+	}
+
+	return true
+
+}
+
+
