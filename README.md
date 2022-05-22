@@ -1,7 +1,8 @@
-Manual to use different routes
+# **Manual to use different routes**
 
-#Register user
+# Register user
 
+```
 route :- /user
 method :- post
 
@@ -12,10 +13,11 @@ method :- post
     "dob": "2000-01-01",
     "password": "mysecretkey"
 }
+```
 
+# Login user
 
-#Login user
-
+```
 route :- /login
 method :- post
 
@@ -23,38 +25,43 @@ method :- post
     "email":"user@gmail.com",
     "password":"mysecretkey"
 }
+```
 
+# Logout user
 
-#Logout user
-
+```
 route :- /logout
 method :- get
+```
 
+# Update user
 
-#Update user
-
+```
 id -> user's id to update details
 
 route :- /users/id
 method :- patch
+```
 
+# Delete user
 
-#Delete user
-
+```
 id -> user's id to delete
 
 route :- /users/id
 method :- delete
+```
 
+# Get all user details
 
-#Get all user details
-
+```
 route :- /users
 method :- get
+```
 
+# Search user (Partial search also supported)
 
-#Search user (Partial search also supported)
-
+```
 Search by id
 route :- /users?id=7
 
@@ -66,10 +73,11 @@ route :- /users?archived=true
 
 Search by email
 route :- /users?email=useremail@gmail.com
+```
 
+# Sort users (Order also supported)
 
-#Sort users (specifying order also supported)
-
+```
 Sort by name
 route :- /users?sortby=name
 
@@ -84,16 +92,17 @@ route :- /users?sortby=dob
 
 Specify order for sorting (ascending by default)
 route :- /users?order=desc
+```
 
+# Control pagination (Default 1st page & 3 items per page)
 
-#Control pagination (Default 1st page & 3 items per page)
-
+```
 Specify page number
 route :- /users?page=2
 
 Specify items per page
 route :- /users?items=7
-
+```
 
 
 
