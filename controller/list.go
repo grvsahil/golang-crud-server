@@ -24,11 +24,8 @@ func List(w http.ResponseWriter, r *http.Request) {
 
 	//get query parameters from request
 	archived := r.URL.Query().Get("archived")
-	id := r.URL.Query().Get("id")
-	name := r.URL.Query().Get("name")
-	email := r.URL.Query().Get("email")
+	search := r.URL.Query().Get("search")
 	sortby := r.URL.Query().Get("sortby")
-	order := r.URL.Query().Get("order")
 	page := r.URL.Query().Get("page")
 	items := r.URL.Query().Get("items")
 
@@ -37,28 +34,14 @@ func List(w http.ResponseWriter, r *http.Request) {
 	if archived == "true" {
 		query = "select user_id,first_name,last_name,email,dob from users where archived=1"
 	}
-	if id != "" {
-		query += " and user_id=" + id
-	}
-	if name != "" {
-		query += ` and first_name like '%` + name + `%' or last_name like '%` + name + `%'`
-	}
-	if email != "" {
-		query += ` and email like '%` + email + `%'`
+	if search!="" {
+		query+= ` and first_name like '%`+search+`%' or last_name like '%`+search+`%' or user_id like 
+		'%`+search+`%' or email like '%`+search+`%'`
 	}
 	if sortby != "" {
-		if sortby=="name"{
-			sortby = "first_name"
-		}
-		if sortby=="id"{
-			sortby = "user_id"
-		}
-		if order != "" {
-			query += ` order by ` + sortby + ` ` + order
-		} else {
-			query += ` order by ` + sortby + ` ASC`
-		}
+		query+= ` order by `+sortby
 	}
+	
 	var total int
 	user ,_:= db.Query(query)
 	for user.Next(){

@@ -5,7 +5,7 @@ import (
 
 	"golang-crud-server/db"
 	"golang-crud-server/logger"
-	mw "golang-crud-server/middleware"
+	// mw "golang-crud-server/middleware"
 	"golang-crud-server/routes"
 
 	_ "github.com/go-sql-driver/mysql"
@@ -23,8 +23,8 @@ func main() {
 	m := handlers.AllowedMethods([]string{"GET", "POST", "PUT", "DELETE"})
 	o := handlers.AllowedOrigins([]string{"*"})
 
-	logger.CommonLog.Println("Starting server at port 8080")
-	err := http.ListenAndServe(":8080", handlers.CORS(h, m, o)(mw.Authorize(router)))
+	logger.CommonLog.Println("Starting server at port 9091")
+	err := http.ListenAndServe(":9091", handlers.CORS(h, m, o)(router))
 	if err!=nil{
 		logger.ErrorLog.Println(err)
 	}

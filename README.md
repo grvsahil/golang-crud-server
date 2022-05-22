@@ -39,7 +39,7 @@ method :- get
 ```
 id -> user's id to update details
 
-route :- /users/id
+route :- /user/id
 method :- patch
 ```
 
@@ -48,7 +48,7 @@ method :- patch
 ```
 id -> user's id to delete
 
-route :- /users/id
+route :- /user/id
 method :- delete
 ```
 
@@ -62,20 +62,14 @@ method :- get
 # Search user (Partial search also supported)
 
 ```
-Search by id
-route :- /users?id=7
-
-Search by name
-route :- /users?name=username
-
 Search by archived
 route :- /users?archived=true
 
-Search by email
-route :- /users?email=useremail@gmail.com
+Search by other parameters
+route :- /users?search=gaurav
 ```
 
-# Sort users (Order also supported)
+# Sort users
 
 ```
 Sort by name
@@ -89,9 +83,6 @@ route :- /users?sortby=id
 
 Sort by dob
 route :- /users?sortby=dob
-
-Specify order for sorting (ascending by default)
-route :- /users?order=desc
 ```
 
 # Control pagination (Default 1st page & 3 items per page)
