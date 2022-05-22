@@ -3,23 +3,30 @@ package main
 import (
 	"net/http"
 
-	"ggolang-crud-server/route"
-	"golang-crud-server/database"
+	"golang-crud-server/db"
 	"golang-crud-server/logger"
+	mw "golang-crud-server/middleware"
+	"golang-crud-server/routes"
 
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/gorilla/handlers"
 )
 
 func main() {
-	database.DBinit()
+	
+	//initialize database and get router
+	db.DBinit()
+	router := routes.Router()
 
-	router := route.Router()
+	//CORS handling
+	h := handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type", "Authorization"})
+	m := handlers.AllowedMethods([]string{"GET", "POST", "PUT", "DELETE"})
+	o := handlers.AllowedOrigins([]string{"*"})
 
-	logger.CommonLog.Println("Starting server at port 9091")
-
-	headers := handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type", "Authorization"})
-	methods := handlers.AllowedMethods([]string{"GET", "POST", "PUT", "DELETE"})
-	origins := handlers.AllowedOrigins([]string{"*"})
-	logger.ErrorLog.Println(http.ListenAndServe(":9091", handlers.CORS(headers, methods, origins)(router)))
+	logger.CommonLog.Println("Starting server at port 8080")
+	err := http.ListenAndServe(":8080", handlers.CORS(h, m, o)(mw.Authorize(router)))
+	if err!=nil{
+		logger.ErrorLog.Println(err)
+	}
 }
+

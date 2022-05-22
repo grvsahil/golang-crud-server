@@ -4,20 +4,29 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"time"
 )
 
 var CommonLog *log.Logger
 var ErrorLog *log.Logger
 
-log-YYYY-MM-DD-HH-MI-SS.log 
-
 func init() {
-	openLogfile, err := os.OpenFile("/home/gaurav/go/src/github.com/grvsahil/golang-crud-server/log.log", 		os.O_RDWR|os.O_CREATE|os.O_APPEND, 0644)
+
+	//creates new log file with given permissions
+	file, err := os.OpenFile("logs/"+getFilename(), os.O_RDWR|os.O_CREATE|os.O_APPEND, 0644)
 	if err != nil {
 		fmt.Println("Error opening file: ", err)
 		os.Exit(1)
 	}
 
-	CommonLog = log.New(openLogfile, "Common Logger:\t",   log.Ldate|log.Ltime|log.Lshortfile)
-	ErrorLog = log.New(openLogfile, "Error Logger:\t", log.Ldate|log.Ltime|log.Lshortfile)
+	//creates new logger
+	CommonLog = log.New(file, "Common Logger:\t", log.Ldate|log.Ltime|log.Lshortfile)
+	ErrorLog = log.New(file, "Error Logger:\t", log.Ldate|log.Ltime|log.Lshortfile)
+}
+
+//eturns log file name
+func getFilename() string {
+	t := time.Now()
+	format := "2006-01-02-15:04:05"
+	return "log-"+t.Format(format) + ".log"
 }
