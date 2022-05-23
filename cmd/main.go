@@ -20,7 +20,7 @@ func main() {
 
 	//CORS handling
 	h := handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type", "Authorization"})
-	m := handlers.AllowedMethods([]string{"GET", "POST", "PUT", "DELETE"})
+	m := handlers.AllowedMethods([]string{"GET", "POST", "PATCH", "DELETE"})
 	o := handlers.AllowedOrigins([]string{"*"})
 
 	logger.CommonLog.Println("Starting server at port 9091")

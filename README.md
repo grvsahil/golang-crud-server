@@ -39,6 +39,13 @@ method :- get
 ```
 id -> user's id to update details
 
+{   
+    "fname": "firstname",
+    "lname": "lastname",
+    "email": "user@gmail.com",
+    "dob": "2000-01-01",
+}
+
 route :- /user/id
 method :- patch
 ```

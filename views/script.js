@@ -1,4 +1,8 @@
+$( document ).ready(function() {
+  $('#updiv').hide();
+});
 var i = 1;
+var Id = 1;
 
 const sendHttpRequest = (method, url, data) => {
   return fetch(url, {
@@ -88,9 +92,26 @@ const deleteData = (id) => {
 }
 
 const editData = (id) => {
+  $('#updiv').show();
+  Id = id
+}
+
+const update = (e) => {
+  e.preventDefault();
+  Fname = $('#Fname').val();
+  Lname = $('#Lname').val();
+  Email = $('#Email').val();
+  Dob = $('#Dob').val();
+
+  data = {
+    fname:Fname,
+    lname:Lname,
+    email:Email,
+    dob:Dob
+  }
   url = 'http://localhost:9091/user';
-  res = url.concat("/",id)
-  sendHttpRequest('PATCH',res).then(response =>{
+  res = url.concat("/",Id)
+  sendHttpRequest('PATCH',res,data).then(response =>{
       get();
   }).catch(err=>{
       window.alert(err)
@@ -114,6 +135,7 @@ nextBtn = $('#next').click(get)
 prevBtn = $('#prev').click(dec)
 searchBtn = $('#search').click(search)
 submitBtn = $('#submit').click(register)
+updateBtn = $('#update').click(update)
 
 
 
