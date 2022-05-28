@@ -55,23 +55,39 @@ func List(w http.ResponseWriter, r *http.Request) {
 	if page == "" {
 		page = "1"
 	}
-	p, _ := strconv.Atoi(page)
-	i, _ := strconv.Atoi(items)
+	p, err := strconv.Atoi(page)
+	if err != nil {
+		w.WriteHeader(http.StatusUnauthorized)
+		logger.ErrorLog.Println(err)
+		return
+	}
+	i, err := strconv.Atoi(items)
+	if err != nil {
+		w.WriteHeader(http.StatusUnauthorized)
+		logger.ErrorLog.Println(err)
+		return
+	}
 	query += fmt.Sprintf(` LIMIT %d OFFSET %d`, i, (p-1)*i)
 
 	//execute query
-	user, err := db.Query(query)
+	user, err = db.Query(query)
 	if err != nil {
 		http.Error(w, "Internal server error", http.StatusInternalServerError)
 		logger.ErrorLog.Println(err)
 		return
 	}
 
+	fmt.Println(query)
+
 	//store retrieved data in structure
 	var users []model.User
 	for user.Next(){
 		var u model.User
-		user.Scan(&u.ID,&u.Firstname,&u.Lastname,&u.Email,&u.DOB)
+		err = user.Scan(&u.ID,&u.Firstname,&u.Lastname,&u.Email,&u.DOB)
+		if err != nil {
+			logger.ErrorLog.Println(err)
+		}
+		fmt.Println(u)
 		users =  append(users, u)
 	}
 	data := Paginate{

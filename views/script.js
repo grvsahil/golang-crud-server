@@ -10,22 +10,33 @@ const sendHttpRequest = (method, url, data) => {
     body: JSON.stringify(data),
     headers: data ? { 'Content-Type': 'application/json' } : {}
   }).then(response => {
-    return response.json();
+    if(response.ok){
+      return response.json();
+    }else{
+      window.alert(response.statusText)
+      return
+    }
+  }).catch(err =>{
+    return err
   });
 };
 
 const get = () => {
+  tkn = localStorage.getItem('token');
   url = 'http://localhost:9091/users?page';
   res = url.concat("=",i)
-  sendHttpRequest('GET',res).then(response =>{
+  res1 = res.concat("&token=",tkn)
+  console.log(res1);
+  sendHttpRequest('GET',res1).then(response =>{
       populateData(response.Data,response.Currpage,response.Lastpage)
   }).catch(err=>{
-      window.alert(err)
+      console.log(err);
   });
   i++;
 }
 
-const register = () => {
+const register = (e) => {
+  e.preventDefault();
   fname = $('#fname').val();
   lname = $('#lname').val();
   email = $('#email').val();
@@ -42,9 +53,9 @@ const register = () => {
 
   sendHttpRequest('POST','http://localhost:9091/user',data).then(response =>{
     get();
-  }).catch(
-    window.alert('enter valid data')
-  );
+  }).catch(err => {
+    window.alert(err)
+  })
 }
 
 const dec = () => {
@@ -66,25 +77,27 @@ function populateData(arr,x,y) {
   $('#info').html(info)
 }
 
-// const login = (e) => {
-//     e.preventDefault();
-//     email = $('#email').val();
-//     password = $('#password').val();
-//     data = {
-//         email:email,
-//         password:password
-//     }
-//     sendHttpRequest('POST','http://localhost:9091/login',data).then(response =>{
-//         window.alert(response.message)
-//     }).catch(err=>{
-//         window.alert(err.message)
-//     });
-// }
+const login = (e) => {
+    e.preventDefault();
+    email = $('#useremail').val();
+    password = $('#userpass').val();
+    data = {
+        email:email,
+        password:password
+    }
+    sendHttpRequest('POST','http://localhost:9091/login',data).then(response =>{
+        localStorage.setItem('token',response)
+        location.replace("http://127.0.0.1:5500/views/users.html")
+    }).catch(err=>{
+        window.alert(err)
+    });
+}
 
 const deleteData = (id) => {
   url = 'http://localhost:9091/user';
   res = url.concat("/",id)
   sendHttpRequest('DELETE',res).then(response =>{
+      window.alert(response)
       get();
   }).catch(err=>{
       window.alert(err)
@@ -112,6 +125,8 @@ const update = (e) => {
   url = 'http://localhost:9091/user';
   res = url.concat("/",Id)
   sendHttpRequest('PATCH',res,data).then(response =>{
+      $('#updiv').hide();
+      window.alert(response)
       get();
   }).catch(err=>{
       window.alert(err)
@@ -129,13 +144,22 @@ const search = () => {
   });
 }
 
+const logout = () => {
+  localStorage.removeItem("token");
+  location.replace("http://127.0.0.1:5500/views/index.html")
+  return
+}
 
-getBtn = $('#get').click(get)
+
 nextBtn = $('#next').click(get)
 prevBtn = $('#prev').click(dec)
 searchBtn = $('#search').click(search)
 submitBtn = $('#submit').click(register)
 updateBtn = $('#update').click(update)
+getBtn = $('#getusers').click(get)
+loginBtn = $('#loginsubmit').click(login)
+logoutBtn = $('#logout').click(logout)
+
 
 
 

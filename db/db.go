@@ -6,28 +6,29 @@ import (
 	"golang-crud-server/logger"
 )
 
-var Db *sql.DB
+var db *sql.DB
 var err error
 
 //return pointer to db object
 func GetDatabase() *sql.DB {
-	return Db
+	return db
 }
 
-func DBinit() {
+func DBinit() error {
 
 	//open new database connection
-	Db, err = sql.Open("mysql", "root:Mobile@123@tcp(localhost:3306)/mysql?charset=utf8")
+	db, err = sql.Open("mysql", "root:Mobile@123@tcp(localhost:3306)/mysql?charset=utf8")
 	if err != nil {
 		logger.ErrorLog.Println(err)
-		return
+		return err
 	}
 	
 	//check if db is connected
-	err = Db.Ping()
+	err = db.Ping()
 	if err != nil {
 		logger.ErrorLog.Println(err)
-		return
+		return err
 	}
 	logger.CommonLog.Println("Database Connected")
+	return nil
 }

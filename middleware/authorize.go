@@ -15,28 +15,18 @@ func Authorize(hf http.Handler) http.Handler {
 		//check relevant routes
 		if (r.URL.Path == "/user"||r.URL.Path=="/users") && (r.Method == http.MethodGet ||
 			r.Method==http.MethodPatch || r.Method == http.MethodDelete) {
-			
-			//get cookie
-			c, err := r.Cookie("token")
-			if err != nil {
-				if err == http.ErrNoCookie {
-					w.WriteHeader(http.StatusUnauthorized)
-					logger.ErrorLog.Print(err)
-					return
-				}
-				w.WriteHeader(http.StatusBadRequest)
-				logger.ErrorLog.Print(err)
-				return
-			}
 
-			//parse received cookie
-			_, err = token.Parse(c.Value)
+			tkn := r.URL.Query().Get("token")
+
+			//parse token string
+			_, err := token.Parse(tkn)
 			if err != nil {
-				logger.ErrorLog.Println(err)
 				w.WriteHeader(http.StatusUnauthorized)
+				logger.ErrorLog.Println(err)
 				return
 			} else {
 				hf.ServeHTTP(w, r)
+				return
 			}
 		}
 		

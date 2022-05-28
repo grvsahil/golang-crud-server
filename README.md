@@ -27,13 +27,6 @@ method :- post
 }
 ```
 
-# Logout user
-
-```
-route :- /logout
-method :- get
-```
-
 # Update user
 
 ```

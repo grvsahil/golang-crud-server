@@ -29,5 +29,5 @@ func GenToken(email string) (string,error) {
 		return tknString,err
 	}
 
-	return tknString,err
+	return tknString,nil
 }

@@ -1,7 +1,7 @@
 package routes
 
 import (
-	c "golang-crud-server/controller"
+	"golang-crud-server/controller"
 
 	"github.com/gorilla/mux"
 )
@@ -9,12 +9,11 @@ import (
 func Router() *mux.Router {
 	r := mux.NewRouter()
 
-	r.HandleFunc("/users", c.List).Methods("GET")
-	r.HandleFunc("/user/{id}", c.Update).Methods("PATCH")
-	r.HandleFunc("/user/{id}", c.Delete).Methods("DELETE")
-	r.HandleFunc("/user", c.Register).Methods("POST")
-	r.HandleFunc("/login", c.Login).Methods("POST")
-	r.HandleFunc("/logout", c.Logout).Methods("GET")
+	r.HandleFunc("/users", controller.List).Methods("GET") //read
+	r.HandleFunc("/user/{id}", controller.Update).Methods("PATCH") //update 
+	r.HandleFunc("/user/{id}", controller.Delete).Methods("DELETE") //delete
+	r.HandleFunc("/user", controller.Register).Methods("POST") //create
+	r.HandleFunc("/login", controller.Login).Methods("POST") //login
 
 	return r
 }

@@ -3,7 +3,7 @@ package controller
 import (
 	"encoding/json"
 	"net/http"
-	"time"
+	// "time"
 
 	"golang-crud-server/db"
 	"golang-crud-server/logger"
@@ -26,7 +26,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 
 	//match the credentials against records in database
 	var password string
-	err = db.QueryRow("SELECT user_id,password FROM users where email=?", user.Email).Scan(&password)
+	err = db.QueryRow("SELECT password FROM users where email=?", user.Email).Scan(&password)
 	if err != nil {
 		w.WriteHeader(http.StatusUnauthorized)
 		logger.ErrorLog.Println(err)
@@ -49,17 +49,8 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	//set cookie for token
-	expirationTime := time.Now().Add(time.Minute * 10)
-	http.SetCookie(w,
-		&http.Cookie{
-			Name:    "token",
-			Value:   tokenString,
-			Expires: expirationTime,
-		})
-
 	//send response
-	json.NewEncoder(w).Encode("login success")
+	json.NewEncoder(w).Encode(tokenString)
 	if err != nil {
 		logger.ErrorLog.Println(err)
 	}
